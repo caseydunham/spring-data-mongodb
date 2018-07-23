@@ -21,7 +21,7 @@ public class TodoController {
   }
 
   @GetMapping("/todo/complete/{id}")
-  public String delete(@PathVariable String id){
+  public String complete(@PathVariable String id){
     Todo todo = todoService.getById(id);
     if (todo != null) {
       todo.setCompleted(Boolean.TRUE);
