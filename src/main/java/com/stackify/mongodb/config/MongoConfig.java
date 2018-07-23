@@ -1,12 +1,10 @@
-package com.stackify.mongodb;
+package com.stackify.mongodb.config;
 
-import com.mongodb.Mongo;
 import com.mongodb.MongoClient;
-import cz.jirutka.spring.embedmongo.EmbeddedMongoBuilder;
+import cz.jirutka.spring.embedmongo.EmbeddedMongoFactoryBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.core.MongoTemplate;
-import cz.jirutka.spring.embedmongo.EmbeddedMongoFactoryBean;
 
 import java.io.IOException;
 
@@ -21,16 +19,7 @@ public class MongoConfig {
     EmbeddedMongoFactoryBean mongo = new EmbeddedMongoFactoryBean();
     mongo.setBindIp(MONGO_DB_URL);
     MongoClient mongoClient = mongo.getObject();
-    MongoTemplate mongoTemplate = new MongoTemplate(mongoClient, MONGO_DB_NAME);
-    return mongoTemplate;
+    return new MongoTemplate(mongoClient, MONGO_DB_NAME);
   }
 
-  @Bean(destroyMethod="close")
-  public Mongo mongo() throws IOException {
-    return new EmbeddedMongoBuilder()
-        .version("2.4.5")
-        .bindIp("127.0.0.1")
-        .port(12345)
-        .build();
-  }
 }

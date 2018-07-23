@@ -28,8 +28,18 @@ hs_err_pid*
 # IntelliJ
 .idea
 *.iml
+out/
 
 # Gradle
 .gradle
-build
-out
+/build/
+gradle-app.setting
+
+# Avoid ignoreing gradle wrapper
+!gradle-wrapper.jar
+
+# Cache of project
+.gradletasknamecache
+
+# # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
+# gradle/wrapper/gradle-wrapper.properties
