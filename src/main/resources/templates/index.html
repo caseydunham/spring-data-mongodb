@@ -1,11 +1,23 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Tasks</title>
+  <title>Todo</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 
 <body>
-  <h1>Tasks</h1>
+  <h1>Todos</h1>
+  <div th:if="${not #lists.isEmpty(todos)}">
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Completed</th>
+      </tr>
+      <tr th:each="todo : ${todos}">
+        <td th:text="${todo.name}"></td>
+        <td th:text="${todo.completed}"></td>
+      </tr>
+    </table>
+  </div>
 </body>
 </html>
