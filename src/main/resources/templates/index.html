@@ -12,10 +12,12 @@
       <tr>
         <th>Name</th>
         <th>Completed</th>
+        <th>Action</th>
       </tr>
       <tr th:each="todo : ${todos}">
         <td th:text="${todo.name}"></td>
         <td th:text="${todo.completed}"></td>
+        <td><a th:href="${'/todo/complete/' + todo.id.toHexString()}">Complete</a> </td>
       </tr>
     </table>
   </div>
